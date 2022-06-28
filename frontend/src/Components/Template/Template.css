@@ -1,0 +1,40 @@
+.menu-icon.readyBtn{
+    z-index: 99999999;
+    position: fixed;
+    bottom: 0;
+    left: 25%;
+    display: block;
+    text-align: center;
+    width: 50% !important;
+    height: 60px;
+    background-color: var(--primary-red);
+    transform: scaleX(0);
+}
+
+.menu-icon.readyBtn i{
+    color: #fff !important;
+}
+.menu-icon.readyBtn.actives{
+    transform: scaleX(1);
+    animation: letStart .1s;
+}
+@keyframes letStart{
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+}
+.menu-icon.readyBtn.noneactive{
+    transform: scaleX(0);
+    animation: cancelStart .1s;
+}
+@keyframes cancelStart{
+    from{
+        transform: scaleX(1);
+    }
+    to{
+        transform: scaleX(0);
+    }
+}

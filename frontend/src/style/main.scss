@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
+
+:root{
+    --primary-background-color: #f6f6f6;
+
+    --primary-red: #f85f6a;
+
+    --primary-text-color: rgb(100, 100, 100);
+    --secondary-text-color: rgb(156, 156, 156);
+
+    --primary-button-color: #72bb52;
+    --secondary-button-color: #ca0000;
+
+    --primary-icon-color: #4b4b4b;
+    --secondary-icon-color: #9c9c9c;
+    
+    --primary-button: #c0c0c0;
+
+    --welldone: rgb(60, 240, 0);
+    --fair: rgb(255, 200, 0);
+    --try: rgb(255, 55, 0);
+
+    --donut-chart-color-1: #f85f6a;
+    --donut-chart-color-2: #5e6af7;
+    --donut-chart-color-3: #7ce3ae;
+    --graph-chart-color-1: #ffa1a7;
+    --graph-chart-color-2: #afb6ff;
+    --graph-chart-color-3: #bfffde;
+}
+
+.layout-debug{
+    border: 1px solid red;
+}
+
+*,*::after,*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a{
+    display: block;
+    text-decoration: none !important;
+}
+li{
+    list-style: none;
+}
+p,h1,h2,h3,h4,h5,h6,ul{
+    margin: 0;
+}
+html, body{
+    height: 100%;
+}
+body{
+    font-family: Roboto, sans-serif;
+    background-color: var(--primary-background-color);
+    position: relative;
+}
+
+/* ----------------------------MAIN SETTINGS START---------------------------- */
+/* สีหลัก รอง ของ ข้อความ และ ไอคอน */
+.primary-red{
+    color: var(--primary-red) !important;
+}
+.primary-text-color{
+    color: var(--primary-text-color) !important;
+}
+.secondary-text-color{
+    color: var(--secondary-text-color) !important;
+}
+.primary-icon-color{
+    color: var(--primary-icon-color) !important;
+}
+.secondary-icon-color{
+    color: var(--secondary-icon-color) !important;
+}
+/* สีหลัก รอง ของ ข้อความ และ ไอคอน */
+
+
+/* ตัวอักษร บาง หนา */
+.weight-100{
+    font-weight: 100;
+}
+.weight-300{
+    font-weight: 300;
+}
+.weight-500{
+    font-weight: 500;
+}
+.weight-700{
+    font-weight: 700;
+}
+.weight-900{
+    font-weight: 900;
+}
+/* ตัวอักษร บาง หนา */
+
+
+
+/* font size */
+.font-head{
+    font-size: 1em;
+}
+.font-subhead{
+    font-size: .8em;
+}
+.font-detail{
+    font-size: .8em;
+}
+/* font size */
+/* ----------------------------MAIN SETTINGS END---------------------------- */
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -120px;
+    .push{
+        height: 130px;
+    }
+}
+.wrapper-no-menu {
+    min-height: 100%;
+    margin-bottom: -50px;
+    .push{
+        height: 50px;
+    }
+}
+$bgNavHeight : 60px;
+$navBtnSize : 40px;
+$paddingTop : 10px;
+$paddingBottom : 10px;
+.topnav{
+    &[nav = false]{
+        .top-btn-create{
+            display: none !important;
+        }
+    }
+    padding-top: ($bgNavHeight - ($navBtnSize + $paddingTop + $paddingBottom)) / 2;
+    .top-btn-create{
+        text-align: right;
+        padding-top: $paddingTop;
+        padding-bottom: $paddingBottom;
+        margin-bottom: 15px;
+        justify-content: space-between;
+        align-items: center;
+        a{
+            cursor: pointer;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: .2s ease;
+        }
+        .nav-btn-plus{
+            &::before{
+                content: "Create activity";
+                display: block;
+                clear: both;
+                color: #fff;
+                position: absolute;
+                top: 17px;
+                right: 60px;
+                font-weight: 300;
+            }
+        }
+    }
+    &[nav = false]{
+        &::after{
+            display: none;
+        }
+    }
+    &::after{
+        background-color: var(--primary-red);
+        content: "";
+        display: block;
+        clear: both;
+        width: 100%;
+        position: absolute;
+        height: $bgNavHeight;
+        top: 0;
+        left: 0;
+        z-index: -999999;
+    }
+    .menu-icon-bottom{
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 -2px 15px -5px rgba(0, 0, 0, .2);
+        background-color: #fff;
+        z-index: 99999;
+        .menu-icon{
+            width: 100%;
+            height: 60px;
+            a{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                i{
+                    color: var(--primary-text-color);
+                }
+            }
+            &:hover{
+                background-color: var(--primary-background-color);
+                a{
+                    i{
+                        color: var(--primary-red);
+                    }
+                }
+            }
+            &.readyBtn.actives:hover{
+                background-color: hsla(356, 100%, 57, 1);
+            }
+            &+.menu-icon{
+                border-left: 1px solid lightgray;
+            }
+        }
+    }
+    .nav-title{
+        margin: 10px 0;
+    }
+    .nav-item{
+        .nav-list{
+            margin-left: 25px;
+            position: relative;
+            a{
+                align-items: center;
+                color: var(--primary-text-color);
+                i{
+                    font-size: .7em;
+                    margin-top: -2.5px;
+                    vertical-align: middle
+                }
+            }
+        }
+    }
+}
+[class*="nav-btn-"]{
+    width: $navBtnSize !important;
+    height: $navBtnSize !important;
+    background-color: transparent;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+footer{
+    height: 50px;
+    .container{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        p{
+            display: flex;
+        }
+    }
+}
+@media screen and (min-width: 576px){
+    .font-sm-head{
+        font-size: 1.2em;
+    }
+    .font-sm-subhead{
+        font-size: .9em;
+    }
+    .font-sm-detail{
+        font-size: .9em;
+    }
+}
+/* Breakpoint md */
+@media screen and (min-width: 768px){
+    .wrapper {
+        margin-bottom: -50px;
+        .push {
+            height: 50px;
+        }
+    }
+    // section{
+    //     margin: 30px 0;
+    // }
+    footer{
+        border-top: 1px solid lightgray;
+    }
+    .topnav{
+        .logo-title{
+            margin-right: 5px;
+            width: 40px;
+        }
+        height: 80px;
+        display: flex;
+        align-items: center;
+        background-color: var(--primary-background-color);
+        &::after{
+            background-color: transparent;
+        }
+        .nav-item{
+            justify-content: flex-end;
+            align-items: center;
+            .nav-list{
+                margin-left: 25px;
+                font-size: .9em;
+                &:hover{
+                    &:not(.nav-list:nth-child(5)){
+                        &::after{
+                            content: "";
+                            display: block;
+                            clear: both;
+                            position: absolute;
+                            width: 100%;
+                            height: 2px;
+                            background-color: #4b4b4b;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .font-md-head{
+        font-size: 1.25em;
+    }
+    .font-md-subhead{
+        font-size: .95em;
+    }
+    .font-md-detail{
+        font-size: .95em;
+    }
+}
+/* Breakpoint lg */
+@media screen and (min-width: 992px){
+    .topnav{
+        .logo-title{
+            margin-right: 10px;
+            width: 60px;
+        }
+        .nav-item{
+            .nav-list{
+                margin-left: 30px;
+                font-size: 1em;
+            }
+        }
+    }
+}
+/* Breakpoint xl */
+@media screen and (min-width: 1200px){}

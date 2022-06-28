@@ -1,0 +1,21 @@
+.imgLogo{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+.warnedLogin{
+    background-color: rgba($color: #f00, $alpha: .2);
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px 5px;
+    font-size: .8em;
+    color: rgb(202, 25, 25);
+}
+.loginComp{
+    padding-top: 10px;
+}
+@media screen and (min-width: 576px){
+    .loginComp{
+        padding: 80px;
+    }
+}

@@ -1,0 +1,98 @@
+/* ---------------------BUTTON ACTIVITY CREATE PAGE START--------------------- */
+.topnav .nav-btn-check {
+  border: none;
+  outline: none;
+  color: #fff;
+}
+.topnav .nav-btn-check:active {
+  color: #00ff37;
+}
+.topnav .nav-btn-check:focus {
+  outline: none;
+}
+
+/* ----------------------BUTTON ACTIVITY CREATE PAGE END--------------------- */
+#leftCol {
+  margin-bottom: 30px;
+}
+#leftCol::-webkit-scrollbar {
+  display: none;
+}
+#leftCol .ListsAllActivity {
+  background-color: var(--primary-background-color);
+  z-index: 9;
+  padding: 5px 0;
+}
+#leftCol .ListsAllActivity .form-search {
+  margin: 10px 0;
+}
+#leftCol .ListsAllActivity .form-search .input-search {
+  width: 100%;
+  padding: 10px 5px;
+  position: relative;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+#leftCol .ListsAllActivity .form-search .magnifyingBtn {
+  position: absolute;
+  top: calc(50% - (24px) / 2);
+  right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#leftCol .ListsAllActivity .form-search .magnifyingBtn .submit-search {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: block;
+  opacity: 0;
+}
+#leftCol .ListsAllActivity .form-search .magnifyingBtn .magnifying {
+  position: absolute;
+}
+
+#rightCol::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width: 576px) {
+  #leftCol .activityItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  #leftCol .activityItem .activityDetails {
+    text-align: left;
+    padding: 0 10px;
+  }
+  #leftCol .ListsAllActivity .activityItem {
+    display: flex;
+    flex-direction: column;
+  }
+  #leftCol .ListsAllActivity .activityItem .activityDetails {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  #leftCol .activityItem {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 30px;
+  }
+}
+@media screen and (min-width: 992px) {
+  #leftCol .activityItem {
+    display: block;
+    margin: 5px auto;
+  }
+  #leftCol .activityItem .activityDetails {
+    text-align: center;
+    padding: 0 0;
+  }
+  #leftCol .activityItem .activityDetails .activityName {
+    width: 100%;
+  }
+}

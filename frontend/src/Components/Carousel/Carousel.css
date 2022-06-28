@@ -1,0 +1,241 @@
+.carousel {
+    width: 100%;
+    padding: 10px 0 35px 0;
+    text-align: center;
+    border-radius: 10px;
+    background-image: linear-gradient(to top right, var(--primary-red) 40%, rgb(255, 176, 176));
+}
+
+
+.carousel-inner .containers{
+    height: 100%;
+}
+.selectedThisPackSet{
+    position: absolute;
+    right: 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(44, 211, 2);
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.carousel-inner > .item {
+    position: relative;
+    display: none;
+    animation: 0.5s ease-in-out;
+    /* cursor: pointer; */
+}
+
+.carousel-inner > .active,
+.carousel-inner > .next {
+    display: block;
+}
+
+.carousel-inner > .next {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.carousel-inner > .to-left {
+    animation-name: left;
+}
+
+.carousel-inner > .from-right {
+    animation-name: right;
+}
+
+.carousel-inner > .to-right {
+    animation-name: right;
+    animation-direction: reverse;
+}
+
+.carousel-inner > .from-left {
+    animation-name: left;
+    animation-direction: reverse;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.carousel-control.right {
+    right: 0;
+    left: auto;
+    z-index: 99;
+}
+
+
+@media screen and (min-width: 420px){
+    .carousel-control{
+        left: 40px
+    }
+    .carousel-control.right{
+        right: 40px;
+    }
+}
+
+.carousel-control > .arrow {
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+    transform: translateY(-50%);
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyNiAyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+QXJyb3c8L3RpdGxlPjxwYXRoIGQ9Ik0yNS42IDEwLjk3NGwtOC41MyA4LjYyYTEuMzYgMS4zNiAwIDAgMS0xLjkzNS4wMDMgMS4zODcgMS4zODcgMCAwIDEtLjAwMi0xLjk1bDYuMjAxLTYuMjY4SDEuMzY4QTEuMzc0IDEuMzc0IDAgMCAxIDAgMTBjMC0uNzYyLjYxMy0xLjM4IDEuMzY4LTEuMzhoMTkuOTY2bC02LjItNi4yNjdhMS4zODcgMS4zODcgMCAwIDEgLjAwMS0xLjk1IDEuMzYgMS4zNiAwIDAgMSAxLjkzNi4wMDJsOC41MyA4LjYyMWMuNTMyLjUzOC41MzIgMS40MSAwIDEuOTQ4IiBmaWxsPSIjRkZGRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=") center center no-repeat;
+}
+
+.carousel-control > .arrow:hover {
+    opacity: 0.8;
+}
+
+.carousel-control > .arrow.left {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.carousel-control > .arrow.right {
+    right: 50%;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    transform: translateX(-50%);
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+}
+
+.carousel-indicators li.active {
+    background-color: #FFFFFF;
+}
+
+
+@keyframes left {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes right {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+
+
+
+
+
+.packageTitle{
+    padding: 5px 0;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    background-color: var(--primary-background-color);
+}
+.activityPackage{
+    margin: 10px 0;
+    padding: 20px 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+    border-bottom: 2px solid lightgray;
+    background-image: linear-gradient(to top right, var(--primary-red) 40%, rgb(255, 176, 176));
+}
+
+.packSet{
+    color: #fff;
+    height: 100%;
+    text-align: center;
+}
+.packSet .activityImage{
+    background-color: #fff;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.packageName{
+    color: #fff;
+    align-items: center;
+}
+.packageName .checkPackSet{
+    position: absolute;
+    top: calc(50% - 40%);
+    left: calc(50% - 100px);
+    width: 200px;
+    height: 100px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+@media screen and (min-width: 992px){
+    .carousel {
+        background-image: none;
+        padding: 0 0 35px 0;
+    }
+    #rightCol{
+        height: 100%;
+        min-height: 800px;
+        overflow: scroll;
+    }
+    .activityPackage{
+        position: relative;
+    }
+    .item{
+        margin: 0 0 10px 0;
+        padding: 20px 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        position: relative;
+        border-bottom: 2px solid lightgray;
+        background-image: linear-gradient(to top right, var(--primary-red) 40%, rgb(255, 176, 176));
+    }
+    .packSet{
+        color: rgb(97, 97, 97);
+    }
+    .packageName{
+        color: #fff;
+    }
+    .checkPackSet{
+        top: calc(50% - 40%);
+        left: calc(50% - 35%);
+        width: 70%;
+        height: 80%;
+    }
+    .activityImage{
+        width: 80px;
+        background-color: #fff;
+    }
+}

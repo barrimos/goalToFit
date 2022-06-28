@@ -1,0 +1,28 @@
+.circleSVG.loading_1{
+    animation: loading_1 5s infinite ease-in-out;
+}
+@keyframes loading_1{
+    0%{
+        stroke-dashoffset: 0;
+    }
+    30%{
+        stroke-dashoffset: 120;
+    }
+    60%{
+        stroke-dashoffset: 200;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+.circleSVG.loading_2{
+    animation: loading_2 3s infinite ease-in-out;
+}
+@keyframes loading_2{
+    0%{
+        stroke-dashoffset: 0;
+    }
+    100%{
+        stroke-dashoffset: 250;
+    }
+}

@@ -1,0 +1,52 @@
+.respond{
+    width: 230px;
+    border: none;
+    outline: none;
+    padding: 10px 0;
+    background-color: transparent;
+    border-radius: 5px;
+    margin: 20px 5px;
+    font-weight: 400;
+    color: #fff;
+}
+.respond:focus{
+    outline: none;
+}
+.respond.continueBtn,
+.respond.authenBtn{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+.respond.regisBtn,
+.respond.continueBtn,
+.respond.authenBtn{
+    background-color: var(--primary-red);
+}
+.respond.regisBtn.disabled,
+.respond.continueBtn.disabled,
+.respond.authenBtn.disabled,
+.respond.regisBtn.disabled > a.disabled,
+.respond.continueBtn.disabled > a.disabled,
+.respond.authenBtn.disabled > a.disabled{
+    opacity: .6;
+    cursor: not-allowed;
+}
+.respond.cancelBtn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+}
+.respond.cancelBtn{
+    color: gray;
+}
+.respond a{
+    color: #fff;
+}
+@media screen and (min-width: 576px){
+    .respond.cancelBtn{
+        margin-left: 75px;
+        margin-right: 75px;
+    }
+}

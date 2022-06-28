@@ -1,0 +1,55 @@
+.searching {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.searching .frmsch {
+    z-index: 9;
+    margin-right: 40px;
+}
+.searching .frmsch #idinput {
+    height: 35px;
+    width: 0;
+    visibility: hidden;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    transition: ease-in-out 0.18s;
+    opacity: 0;
+}
+.searching .frmsch #idinput.open {
+    width: 135px;
+    visibility: visible;
+    opacity: 1;
+}
+.searching .schbtn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    background-color: var(--primary-red);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transition: ease-in-out 0.18s;
+}
+.searching .schbtn .iconsch {
+    cursor: pointer;
+    z-index: 1;
+    padding: 9px;
+    width: 35px;
+    color: black;
+    filter: invert(1);
+}
+.searching .schbtn.active {
+    width: 180px;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 14, 41, 0.1);
+}
+.searching .schbtn.active .iconsch {
+    filter: invert(0);
+}

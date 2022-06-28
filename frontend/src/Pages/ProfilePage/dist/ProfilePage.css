@@ -1,0 +1,81 @@
+.column-profile {
+  color: #3b3b3b;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  margin-top: 5px;
+}
+.column-profile .cardProfile {
+  position: relative;
+}
+.column-profile .cardProfile .imgProfile {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  overflow: hidden;
+  display: block;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.column-profile .cardProfile .profileEditBtn {
+  display: block;
+  width: 120px;
+  outline: none;
+  border: none;
+  background-color: var(--primary-red);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 99;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.column-profile .cardProfile .myGoal {
+  display: block;
+  font-size: 0.9em;
+}
+.column-profile .userGoal {
+  height: 200px;
+}
+
+.column-data {
+  color: #3b3b3b;
+  width: 100%;
+}
+.column-data .blog-data {
+  height: 200px;
+  margin: 5px 0;
+}
+.column-data .blog-data .inside-block {
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 15px -8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.column-data .blog-data .inside-block .title-data {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.column-data .blog-data .inside-block [class*=result_] {
+  text-align: center;
+}
+.column-data .blog-data .inside-block [class*=result_] .res {
+  display: block;
+}
+.column-data .blog-data .inside-block [class*=result_] .res em {
+  font-size: 3em;
+  font-weight: 600;
+}
+.column-data .blog-data .inside-block .result_Calories select {
+  margin: 10px 0;
+  display: block;
+  font-size: 1em;
+}

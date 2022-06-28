@@ -1,0 +1,18 @@
+
+.formEmailPass > *{
+    display: block;
+    width: 100%;
+}
+.formEmailPass label{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.formEmailPass label input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: .2px solid lightgray;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+}

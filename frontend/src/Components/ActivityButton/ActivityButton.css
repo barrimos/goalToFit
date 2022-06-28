@@ -1,0 +1,96 @@
+.activityItem{
+    margin: 5px auto;
+    width: 70px;
+    text-align: center;
+    position: relative;
+}
+.checkItem{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+    opacity: 0;
+}
+.packSet .activityImage{
+    width: 60px !important;
+    height: auto;
+}
+.activityImage{
+    width: 74px;
+    height: 74px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    background-color: #fff;
+}
+.activityImage:hover{
+    box-shadow: 0 0 10px -5px rgba(0, 0, 0, .8);
+}
+.removeActivityIcon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: .6em;
+    background-color: red;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    z-index: 999;
+}
+.activityDetails{
+    text-align: center;
+    width: 74px;
+}
+.activityName{
+    width: 100%;
+    font-size: .9em;
+}
+.type, .set{
+    font-size: .8em;
+}
+.activityItem.active .activityImage{
+    border: 2px solid red;
+}
+.selectedActivities{
+    margin-top: -175px !important;
+}
+.selectedActivities .activityItem{
+    width: 75px !important;
+}
+
+
+
+.selectedActivities.showAtTop{
+    margin-top: -65px !important;
+}
+.activityImage.setScaleShowTop{
+    width: 55px;
+    height: 55px;
+}
+
+
+@media screen and (min-width: 576px){
+    .activityDetails{
+        width: 100%;
+    }
+    .selectedActivities .activityDetails{
+        width: 100px;
+    }
+}
+@media screen and (min-width: 768px){
+    .packSet .activityImage{
+        width: 70px !important;
+    }
+    .ListsAllActivity .activityItem{
+        width: 70px !important;
+    }
+    .selectedActivities{
+        margin-top: -125px !important;
+    }
+}

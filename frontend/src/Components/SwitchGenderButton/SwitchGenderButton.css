@@ -1,0 +1,51 @@
+.switch-gender-btn{
+    position: relative;
+    width: 220px;
+    height: 40px;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .7em;
+}
+.groupButton{
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 5px;
+}
+.label-switch-male, .label-switch-female{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    transition: .2s ease;
+    cursor: pointer;
+    transition: ease .2s;
+    border-radius: 30px;
+    font-size: 1.5em;
+    margin-top: 0;
+}
+.label-switch-male:hover, .label-switch-female:hover{
+    background-color: rgb(255, 212, 212);
+}
+.label-switch-male.active, .label-switch-female.active{
+    color: #fff;
+    background-color: var(--primary-red);
+}
+.checkbox-male,.checkbox-female{
+    display: block;
+    width: auto;
+    height: 30px;
+    position: absolute;
+    visibility: hidden;
+}
+.checkbox-male{
+    left: 0;
+}
+.checkbox-female{
+    right: 0;
+}

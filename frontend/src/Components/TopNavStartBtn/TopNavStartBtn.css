@@ -1,0 +1,23 @@
+.TopNavStartBtn{
+    padding: 5px 0;
+    background-color: var(--primary-red);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    height: 75px;
+    transition: .1s ease-in-out;
+    transform: translateY(-75px);
+}
+.iconTopNavStart{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: #fff;
+}
+.TopNavStartBtn .col-md-4.inTopNav{
+    max-width: 100% !important;
+}

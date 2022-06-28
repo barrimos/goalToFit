@@ -1,0 +1,72 @@
+#switch-in-out{
+    margin: 10px 0;
+    z-index: 999;
+}
+.switch-in-out-btn{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    border-radius: 30px;
+    border: 2px solid var(--primary-red);
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .7em;
+}
+.label-switch-outdoor,.label-switch-indoor, .label-switch-all{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    width: 50%;
+    height: 100%;
+    margin-bottom: 0;
+    transition: .2s ease;
+    cursor: pointer;
+}
+.label-switch-all:hover{
+    background-color: rgb(255, 212, 212);
+}
+.label-switch-outdoor:hover{
+    background-color: rgb(255, 212, 212);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.label-switch-indoor:hover{
+    background-color: rgb(255, 212, 212);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.label-switch-outdoor.active,
+.label-switch-indoor.active,
+.label-switch-all.active{
+    color: #fff;
+    background-color: var(--primary-red);
+}
+
+.label-switch-outdoor.active{
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.label-switch-indoor.active{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.checkbox-indoor,.checkbox-outdoor, .checkbox-all{
+    display: block;
+    width: auto;
+    height: 30px;
+    position: absolute;
+    visibility: hidden;
+}
+.checkbox-indoor{
+    left: 0;
+}
+.checkbox-outdoor{
+    right: 0;
+}
+.checkbox-all{
+    left: calc(50% - 7.5px);
+}

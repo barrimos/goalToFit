@@ -1,0 +1,60 @@
+.cardAc{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    min-height: 400px;
+    height: calc(100% - 20px);
+    box-shadow: 0 0 10px -7px rgba(0, 0, 0, .4);
+    /* transition: ease .2s; */
+    position: relative;
+    overflow: hidden;
+}
+.cardAc.withRest{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.cardAc.withRest.empty{
+    opacity: .5;
+    cursor: pointer;
+}
+.cardAc.withRest.empty:hover{
+    opacity: .8;
+}
+.restCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+.restCard .restH6{
+    font-size: 3em;
+    color: var(--primary-text-color);
+    opacity: .4;
+}
+.restCard .plusBtn{
+    width: 40px;
+    margin: 0 auto;
+    font-size: 2em;
+    color: var(--primary-text-color);
+    cursor: pointer;
+}
+.restCard .plusBtn:hover{
+    color: var(--primary-red);
+}
+.restCard h6{
+    margin: 10px 0;
+}
+.restCard .imageActivity{
+    display: block;
+    margin: 15px auto;
+    width: 100px;
+}
+.restCard .imageActivity:not(.active){
+    opacity: .4;
+}
+.restCard .imageActivity.active{
+    width: 90px;
+}

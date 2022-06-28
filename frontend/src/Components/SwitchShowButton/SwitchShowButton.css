@@ -1,0 +1,62 @@
+.SwitchGroupCard{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    position: relative;
+}
+label{
+    margin-bottom: 0;
+    color: var(--primary-text-color);
+}
+.labelName{
+    width: 95px;
+    font-weight: 300;
+    text-align: left;
+}
+.iconSwitch{
+    display: block;
+    position: absolute;
+    clear: both;
+    border-radius: 5px;
+    height: 25px;
+    width: 20px;
+    margin-top: -2px;
+    background-color: rgb(228, 228, 228);
+    border: 2px solid gray;
+    transition: .2s ease-in-out;
+    top: 0;
+    left: calc(50% - 10px);
+    cursor: pointer;
+}
+.iconSwitch:after{
+    content: '';
+    display: block;
+    position: absolute;
+    clear: both;
+    border-radius: 5px;
+    height: 25px;
+    width: 20px;
+    top: 0;
+    left: 0;
+    margin-top: -2px;
+    margin-left: -2px;
+    background-color: rgb(255, 190, 190);
+    border: 2px solid gray;
+    z-index: -2;
+    transition: .2s ease-in-out;
+    opacity: 0;
+}
+.swt-icon-btn:checked + label .iconSwitch:after{
+    margin-left: 5px;
+    transform-origin: 5px center;
+    transform: rotate(15deg);
+    opacity: 1;
+}
+.swt-icon-btn{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 999;
+    opacity: 0;
+    cursor: pointer;
+}

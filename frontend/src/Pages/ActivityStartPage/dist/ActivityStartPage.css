@@ -1,0 +1,165 @@
+.current_activity .container {
+  height: 100%;
+}
+.current_activity .container .subHead {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.current_activity .container .cardAc {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  min-height: 400px;
+  height: calc(100% - 20px);
+  box-shadow: 0 0 10px -7px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+.current_activity .container .cardAc:after {
+  display: block;
+  content: "";
+  position: absolute;
+  clear: both;
+  width: 100%;
+  height: 15px;
+  background-color: var(--primary-red);
+  left: 0;
+  bottom: 0;
+}
+.current_activity .container .cardAc .acname {
+  color: var(--primary-red);
+}
+.current_activity .container .cardAc.withRest {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.current_activity .container .cardAc.withRest.empty {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.current_activity .container .cardAc.withRest.empty:hover {
+  opacity: 0.8;
+}
+.current_activity .container .cardAc .settingInfo {
+  width: 100%;
+  margin: 0 auto;
+}
+.current_activity .container .cardAc .settingInfo label {
+  font-size: 0.9em;
+  width: 75px;
+  margin-bottom: 0;
+  margin-right: 5px;
+  padding-bottom: 10px;
+}
+.current_activity .container .cardAc .settingInfo input {
+  height: 30px;
+  font-weight: 300;
+  color: #666;
+  font-size: 0.9em;
+  padding: 5px;
+  border: 0.2px solid #ddd;
+  width: calc(100% - 80px);
+  font-weight: 400;
+  color: var(--primary-red);
+}
+.current_activity .container .cardAc .settingInfo input:placeholder-shown {
+  font-weight: 300;
+}
+.current_activity .container .cardAc .restCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+.current_activity .container .cardAc .restCard .restH6 {
+  font-size: 3em;
+  color: var(--primary-text-color);
+  opacity: 0.4;
+}
+.current_activity .container .cardAc .restCard .plusBtn {
+  width: 40px;
+  margin: 0 auto;
+  font-size: 2em;
+  color: var(--primary-text-color);
+  cursor: pointer;
+}
+.current_activity .container .cardAc .restCard .plusBtn:hover {
+  color: var(--primary-red);
+}
+.current_activity .container .cardAc .restCard h6 {
+  margin: 10px 0;
+}
+.current_activity .container .cardAc .badgeType {
+  width: 20px;
+  opacity: 0.7;
+  height: auto;
+}
+.current_activity .container .cardAc .card-top {
+  color: #929292;
+  height: 30px;
+}
+.current_activity .container .cardAc .card-bottom {
+  height: 40px;
+}
+.current_activity .container .cardAc .slideBtn {
+  color: #929292;
+  width: calc(100% - 16px);
+  border-top: 1px solid #e9e9e9;
+}
+.current_activity .container .cardAc .slideBtn .left, .current_activity .container .cardAc .slideBtn .right {
+  cursor: pointer;
+  padding: 5px;
+}
+.current_activity .container .cardAc .imageActivity {
+  display: block;
+  margin: 15px auto;
+  width: 100px;
+}
+.current_activity .container .cardAc .imageActivity:not(.active) {
+  opacity: 0.4;
+}
+.current_activity .container .cardAc .imageActivity.active {
+  width: 90px;
+}
+.current_activity .container .cardAc .button-handle-activity {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.current_activity .container .cardAc .button-handle-activity [class*=btn-handle-] {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--primary-text-color);
+}
+.current_activity .container .cardAc .button-handle-activity .btn-handle-save {
+  margin: 20px 0 30px 0;
+  height: 40px;
+  width: 80px;
+  width: 120px;
+  display: block;
+  background-color: #99ff99;
+  color: #00cc00;
+}
+.current_activity .container .cardAc .button-handle-activity .btn-handle-delete {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  color: var(--primary-red);
+}
+.current_activity .container .tutVid {
+  margin: 10px 0;
+  justify-content: center;
+  align-items: center;
+  background-color: #202020;
+  border-radius: 10px;
+}
+.current_activity .container .tutVid .tubeVid {
+  width: 80%;
+  height: 315px;
+}

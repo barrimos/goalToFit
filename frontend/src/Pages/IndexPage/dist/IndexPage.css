@@ -1,0 +1,129 @@
+.addBg {
+  background-image: url(../../../../public/img/bodybg-1.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.addBg::-webkit-scrollbar {
+  display: none;
+}
+.addBg::before {
+  background-color: #000;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  opacity: 0.4;
+  position: fixed;
+}
+
+.gtf-title {
+  animation-name: goaltofit;
+  animation-duration: 1s;
+  transition-timing-function: ease;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  position: relative;
+}
+@media screen and (min-width: 1200px) {
+  .gtf-title {
+    margin-top: 80px;
+  }
+}
+.gtf-title h1 {
+  font-style: oblique;
+  color: #fff;
+  line-height: 0.8em;
+  font-weight: 900;
+}
+@media screen and (min-width: 576px) {
+  .gtf-title h1 {
+    font-size: 7em;
+  }
+}
+.gtf-title img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  filter: brightness(20);
+  width: 40px;
+}
+@media screen and (min-width: 768px) {
+  .gtf-title img {
+    width: 200px;
+    top: 103px;
+    left: 120px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .gtf-title img {
+    top: 105px;
+  }
+}
+.gtf-title .startBtn {
+  margin: 0 auto;
+  color: #fff;
+  font-size: 3em;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.gtf-title .startBtn:hover {
+  background-color: red;
+  color: #fff;
+  border: 2px solid red;
+}
+
+@keyframes goaltofit {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.bannerImg {
+  width: 100%;
+  display: block;
+}
+.bannerImg .imgExc {
+  margin: 5px 0;
+  border-radius: 5px;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin: 5px 0;
+}
+
+@media screen and (min-width: 1200px) {
+  .bannerImg {
+    margin-top: 80px;
+    display: flex;
+  }
+  .bannerImg .imgExc {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .bannerImg:hover .imgExc:not(:hover) {
+    filter: grayscale(1);
+  }
+  .bannerImg .imgExc {
+    transition: 0.2s ease;
+    width: 10px;
+    height: 400px;
+    flex: 1;
+  }
+  .bannerImg .imgExc:hover {
+    flex: 6;
+  }
+}
+#indexPage {
+  color: #fff;
+}

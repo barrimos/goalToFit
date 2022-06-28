@@ -1,0 +1,25 @@
+.settingInfo{
+    width: 100%;
+    margin: 0 auto;
+}
+.settingInfo label{
+    font-size: .9em;
+    width: 75px;
+    margin-bottom: 0;
+    margin-right: 5px;
+    padding-bottom: 10px;
+}
+.settingInfo input{
+    height: 30px;
+    font-weight: 300;
+    color: #666;
+    font-size: .9em;
+    padding: 5px;
+    border: .2px solid #ddd;
+    width: calc(100% - 80px);
+    font-weight: 400;
+    color: var(--primary-red);
+}
+.settingInfo input:placeholder-shown{
+    font-weight: 300;
+}

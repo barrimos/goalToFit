@@ -1,0 +1,45 @@
+.weekly{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.dayCheckButton{
+    position: relative;
+    margin: 0 4px;
+}
+.inputDay{
+    position: absolute;
+    visibility: hidden;
+}
+[class*='label-day-']{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+[class*='label-day-']:hover{
+    background-color: rgb(255, 212, 212);
+}
+[class*='label-day-'].active{
+    background-color: var(--primary-red);
+    color: #fff;
+}
+@media screen and (min-width: 420px){
+    .dayCheckButton{
+        margin: 0 2.85px;
+    }
+}
+@media screen and (min-width: 576px){
+    .weekly{
+        justify-content: space-between;
+    }
+    .dayCheckButton{
+        margin: 0 0;
+    }
+}

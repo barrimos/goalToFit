@@ -1,0 +1,130 @@
+.modal.active{
+    z-index: 999999;
+    display: block;
+    transform: scale(1);
+    animation: toshow .1s ease-in-out;
+}
+@keyframes toshow{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+.modal.toHide{
+    transform: scale(0);
+    animation: toHide .1s ease-in-out;
+}
+@keyframes toHide{
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(0);
+    }
+}
+body.active:before{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: fixed;
+    clear: both;
+    content: '';
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    background-color: rgba(0, 0, 0, .4);
+}
+.modal{
+    width: 90%;
+    height: 380px;
+    padding: 0 15px 15px;
+    background-color: var(--primary-background-color);
+    display: none;
+    position: fixed;
+    top: calc(50% - 190px);
+    left: calc(50% - 45%);
+    border-radius: 10px;
+    box-shadow: 0 7px 8px -2px rgba(0, 0, 0, .3);
+}
+@media screen and (min-width: 576px) {
+    .modal{
+        max-width: 518px;
+        left: calc(50% - 259px);
+    }
+}
+.modal.scroll{
+    overflow: scroll;
+}
+.modal.scroll::-webkit-scrollbar{
+    display: none;
+}
+.modal.hidden{
+    overflow: hidden;
+}
+.bg{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: block;
+    position: absolute;
+    clear: both;
+    z-index: -1;
+}
+.modalTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    height: 50px;
+    padding: 0 15px;
+    margin: 0 -15px;
+    color: #fff;
+    background-color: var(--primary-red);
+}
+.closeModal{
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #fff;
+}
+.modalImage{
+    display: block;
+    padding: 10px;
+    margin: 0 auto;
+    width: 80px;
+}
+.modalContent{
+    display: flex;
+    flex-direction: column;
+}
+.modalContent > span,
+.modalContent > div{
+    margin: 0 -15px;
+}
+.modalButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+[class*=modalButton-]{
+    width: 80px;
+    height: 30px;
+    border: none;
+    margin: 10px;
+    border-radius: 5px;
+}
+.modalButton-edit{
+    background-color: hsl(120, 100%, 80%);
+    color: hsl(120, 100%, 40%);
+}
+.modalButton-delete{
+    background-color: hsl(0, 100%, 80%);
+    color: hsl(0, 100%, 40%);
+}
