@@ -285,9 +285,6 @@ function ActivityCreatePage(){
             } else {
                 setInSession(false);
             }
-            // return () => {
-            //     document.querySelectorAll('div[collection=activityItem]');
-            // }
         }
     }, [isWaiting])
 
