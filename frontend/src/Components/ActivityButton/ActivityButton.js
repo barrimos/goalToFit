@@ -14,7 +14,7 @@ function ActivityButton(props){
     return(
         props.behavior === 'list' ? 
         <div className={`col-4 allActivities ${props.display}`} id={props.id}>
-            <div className={`activityItem ${active}`} id={props.id} collection='activityItem'>
+            <div className={`activityItem ${active}`} id={props.id} pos={props.pos}>
                 <img
                     src={`../../../img/${name}.png`}
                     className='activityImage'

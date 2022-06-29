@@ -232,6 +232,7 @@ function ActivityCreatePage(){
 
     const addSelectActivities = (e) => {
         let items = e.target.attributes.data.value.split('-');
+        items.push(e.target.parentNode.attributes.pos.value);
         if(singleActivitySelect.length < 3){
             setSingleActivitySelect([...singleActivitySelect, items]);
             setImageActive([...imageActive, e.target]);
@@ -272,20 +273,21 @@ function ActivityCreatePage(){
 
     useEffect(async () => {
         let dataOldItems = await JSON.parse(sessionStorage.getItem('setUserSelect'));
+        
         if(inSession){
             return;
         } else {
             if(dataOldItems !== null && dataOldItems.length > 0){
-                await document.querySelectorAll('div[collection=activityItem]')[dataOldItems[0][3] - 1].children[0].click();
-                await document.querySelectorAll('div[collection=activityItem]')[dataOldItems[1][3] - 1].children[0].click();
-                await document.querySelectorAll('div[collection=activityItem]')[dataOldItems[2][3] - 1].children[0].click();
+                await document.querySelector(`[pos='${[dataOldItems[0][4]]}'`).children[0].click();
+                await document.querySelector(`[pos='${[dataOldItems[1][4]]}'`).children[0].click();
+                await document.querySelector(`[pos='${[dataOldItems[2][4]]}'`).children[0].click();
                 setInSession(true);
             } else {
                 setInSession(false);
             }
-            return () => {
-                document.querySelectorAll('div[collection=activityItem]');
-            }
+            // return () => {
+            //     document.querySelectorAll('div[collection=activityItem]');
+            // }
         }
     }, [isWaiting])
 
@@ -352,7 +354,7 @@ function ActivityCreatePage(){
                                         {/* list activities from database */}
                                         {activitiesSets.map((activity, i) =>
                                             (
-                                                <ActivityButton key={i} behavior={'list'} display={activity.display || ''} name={activity.name} type={activity.type} id={activity.id} classifier={activity.classifier} select={singleActivitySelect} handleIconAddRemove={handleIconAddRemove}/>
+                                                <ActivityButton key={i} behavior={'list'} display={activity.display || ''}pos={i} name={activity.name} type={activity.type} id={activity.id} classifier={activity.classifier} select={singleActivitySelect} handleIconAddRemove={handleIconAddRemove}/>
                                             )
                                         )}
                                         {/* list activities from database */}
