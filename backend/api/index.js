@@ -28,14 +28,6 @@ const registerRouter = require('./router/register');
 app.use('/register', registerRouter);
 
 
-const loginRouter = require('./router/login');
-app.use('/login', loginRouter);
-
-
-const forgotPassRouter = require('./router/forgotpassword');
-app.use('/reset_password', forgotPassRouter);
-
-
 const profileRouter = require('./router/profile');
 app.use('/profile', profileRouter);
 

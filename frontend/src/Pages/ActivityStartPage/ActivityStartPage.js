@@ -49,7 +49,7 @@ function ActivityStartPage(){
     const saveActivityToDB = async (e, index) => {
         e.preventDefault();
         let exerciseLen;
-        await axios.get(`${config.vercel}start/activity`)
+        await axios.get(`${config.vercel}report/records`)
             .then(res => {
                 if(res.data.length === 0){
                     exerciseLen = 0;

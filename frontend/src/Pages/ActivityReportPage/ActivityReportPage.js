@@ -86,7 +86,7 @@ function ActivityReportPage(){
         for(let i = 0; i < elems.length; i++){
             let statsUser = await Number(elems[i].attributes.value.value);
             let statsGoal = await Number(elems[i].attributes.goal.value);
-            console.log(elems[i].attributes.name)
+            // console.log(elems[i].attributes.name)
             if(elems[i].attributes.name){
                 if(statsUser > statsGoal){
                     if(elems[i].classList.contains('welldone') || elems[i].classList.contains('fair')){
