@@ -16,7 +16,7 @@ import FullDate from '../../Components/FullDate/FullDate';
 import Reloading from '../../Components/Reloading/Reloading';
 
 function ActivityReportPage(){
-
+    
     const [user, setUser] = useState();
     const [records, setRecords] = useState([]);
     const [userBmi, setUserBmi] = useState();

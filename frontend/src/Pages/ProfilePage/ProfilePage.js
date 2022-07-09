@@ -10,7 +10,7 @@ import Reloading from '../../Components/Reloading/Reloading';
 
 function ProfilePage(){
 
-    const [isModalOpen, setIsModalOpen] = useState();
+    const [isOpenModal, setIsOpenModal] = useState();
     const [user, setUser] = useState();
     const [isWaiting, setIsWaiting] = useState(true);
 
@@ -22,11 +22,11 @@ function ProfilePage(){
 
     const editorOpen = (e) => {
         e.preventDefault();
-        setIsModalOpen(true);
+        setIsOpenModal(true);
     }
 
     const stateCloseModal = () => {
-        setIsModalOpen(false);
+        setIsOpenModal(false);
     }
 
     useEffect(() => {
@@ -44,10 +44,10 @@ function ProfilePage(){
                 :
                 <Template search={false} titleHead='Profile' showNav={false} readyButton={false}>
                     <div className='container'>
-                        {isModalOpen ?
+                        {isOpenModal ?
                             <Modal
                                 headTitle='Edit Personal'
-                                stateModalOpen={isModalOpen}
+                                stateOpenModal={isOpenModal}
                                 stateCloseModal={stateCloseModal}
                                 overflowY='scroll'
                             >

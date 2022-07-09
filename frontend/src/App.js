@@ -20,7 +20,7 @@ function App() {
     sessionStorage.removeItem("dataUserRegister");
     sessionStorage.removeItem("dayAndTime");
     sessionStorage.removeItem("completeAllData");
-    sessionStorage.removeItem("email");
+    // sessionStorage.removeItem("email");
   }
   return (
     <Routes>

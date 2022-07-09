@@ -1,0 +1,23 @@
+.backTo {
+  width: auto;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--primary-red);
+}
+
+.cardTeam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #fcfcfc;
+}
+.cardTeam a {
+  margin: 0 10px;
+  color: var(--primary-text);
+}

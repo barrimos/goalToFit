@@ -3,19 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    // id: {
-    //     type: String,
-    //     unique: true
-    // },
-    // email: {
-    //     type: String,
-    //     required: true,
-    //     unique: true,
-    // },
-    // password: {
-    //     type: String,
-    //     required: true,
-    // },
     username: {
         type: String,
         required: true,
@@ -43,7 +30,7 @@ const userSchema = new Schema({
     },
     score: Number,
     goal: String,
-    achievement: Object,
+    achievement: Number,
     setDayAndTime: Object,
     last_activityAndDuration: Object,
     favActivities: Array,

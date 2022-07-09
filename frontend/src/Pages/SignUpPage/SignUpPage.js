@@ -10,7 +10,7 @@ import Logo from '../../Components/Logo/Logo';
 
 function SignUpPage(){
 
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState('');
     const [id, setId] = useState('');
     const [pass, setPass] = useState('');
     const [isAgreeTermCheck, setIsAgreeTermCheck] = useState(false);
@@ -27,7 +27,7 @@ function SignUpPage(){
             }
         })
         .catch(err => alert('Error: ' + err))
-    }, [])
+    })
 
     useEffect(() => {
         if(email && pass.length >= 6 && isAgreeTermCheck){
@@ -38,22 +38,19 @@ function SignUpPage(){
     }, [isAgreeTermCheck, email, pass]);
 
     const signupFirst = async () => {
-        const authen = {
-            id: String(id + 1),
+        const authen = await {
+            id: id === '100001' ? id : String(id + 1),
             email: email,
             password: pass
         };
-        // console.log(authen);
-        await axios.post(`${config.vercel}register/authentication_regis`, authen)
-        .then(res => {
-            alert('Email registeration complete click to continue..', res);
-            window.location.href = window.location.origin + `/register/${email}`;
-            })
-            .catch(err => {
-                alert('Error: Email has already axists', err);
-            })
-    }
 
+        await axios.post(`${config.vercel}register/authentication_regis`, authen)
+            .then(res => {
+                alert('Email registeration complete click to continue..', res);
+                window.location.href = window.location.origin + '/register';
+            })
+            .catch(err => alert('Error: Email has already exists', err));
+    }
 
     return(
         <>

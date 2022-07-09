@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Button from '../Button/Button';
+import Checkbox_agreeRegis from '../Checkbox_agreeRegis/Checkbox_agreeRegis';
 import './InputForm.css';
 const { handleEmailPass } = require('../../utils/handleEmailPass');
 
-const InputForm = (props) => {
+function InputForm(props){
+
+    useEffect(() => {
+        if(document.getElementById('email').value !== ''){
+            document.getElementById('email').value = '';
+        }
+    }, [])
 
     const validateInput = (e) => {
         if(props.respond === 'login'){
@@ -40,8 +47,7 @@ const InputForm = (props) => {
         }
     }
 
-
-    const handleIsCheck = (e) => {
+    const agreeTerm = (e) => {
         props.setIsAgreeTermCheck(e.target.attributes['value'].value === 'false' ? true : false);
     }
 
@@ -59,7 +65,7 @@ const InputForm = (props) => {
             </label>
             {props.respond === 'signup' ?
                 <div className='checkTerm d-flex align-items-center'>
-                    <input type='checkbox' id='isCheck' value={props.isAgreeTermCheck || false} onClick={e => handleIsCheck(e)}/>
+                    <Checkbox_agreeRegis id='isCheck' value={props.isAgreeTermCheck || false} agreeTerm={agreeTerm}/>
                     <p className='font-detail weight-500 d-flex justify-content-center align-items-center'>
                         I agree to the &nbsp;
                         <a href='#'>Term &nbsp;</a>

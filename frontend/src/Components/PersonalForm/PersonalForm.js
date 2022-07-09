@@ -6,11 +6,12 @@ import config from '../../config';
 import SwitchGenderButton from '../SwitchGenderButton/SwitchGenderButton';
 import WeeklyCheckbox from '../WeeklyCheckbox/WeeklyCheckbox';
 import Button from '../Button/Button';
+import Checkbox_agreeRegis from '../Checkbox_agreeRegis/Checkbox_agreeRegis';
 
 
 function PersonalForm(props){
 
-    const [isAllow, setIsAllow] = useState(false);
+    const [isAllow, setIsAllow] = useState(true);
 
     const [username, setUsername] = useState();
     const [avatar, setAvatar] = useState();
@@ -21,16 +22,17 @@ function PersonalForm(props){
     const [goal, setGoal] = useState();
     const [days, setDays] = useState([]);
     const [time, setTime] = useState();
+    const [achievement, setAchievement] = useState(0);
     const [isAgreedRegis, setIsAgreedRegis] = useState(false);
 
-    useEffect(() => {
-        let loc = window.location.pathname;
-        if(loc !== `/register/${loc.split('/')[2]}`){
-            window.location.href = `${window.location.origin}/login`;
-        } else {
-            setIsAllow(true);
-        }
-    }, [])
+    // useEffect(() => {
+    //     let loc = window.location.pathname;
+    //     if(loc !== `/register/${loc.split('/')[2]}`){
+    //         window.location.href = `${window.location.origin}/login`;
+    //     } else {
+    //         setIsAllow(true);
+    //     }
+    // }, [])
 
     const agreeTerm = (e) => {
         if(e.target.checked){
@@ -98,22 +100,23 @@ function PersonalForm(props){
             'setDayAndTime': {
                 'days': days,
                 'time': time
-            }
+            },
+            'achievement': achievement || 0
         }
-        console.log(User);
+        // console.log(User);
 
-        // await axios.put(`${config.vercel}register/personal_regis`, User)
-        //     .then(res => {
-        //         console.log(res.data);
-        //         window.location.href = `${window.location.origin}/login`;
-        //         // sessionStorage.clear();
-        //     })
-        //     .catch(err => {
-        //         alert('Your register is not complete, Username or email is already exist');
-        //         document.getElementById('agreeTerm').checked = false;
-        //         // sessionStorage.removeItem('completeAllData');
-        //         agreeTerm();
-        //     });
+        await axios.put(`${config.vercel}register/personal_regis`, User)
+            .then(res => {
+                console.log(res.data);
+                window.location.href = `${window.location.origin}/login`;
+                // sessionStorage.clear();
+            })
+            .catch(err => {
+                alert('Your register is not complete, Username or email is already exist');
+                document.getElementById('agreeTerm').checked = false;
+                // sessionStorage.removeItem('completeAllData');
+                agreeTerm();
+            });
     }
 
 
@@ -165,7 +168,7 @@ function PersonalForm(props){
                             </div>
                             <div className='col-12 my-3'>
                                 <div className='checkboxAgree'>
-                                    <input type='checkbox' className='agreeTerm' id='agreeTerm' name='agreeTerm' onClick={e => agreeTerm(e)} required/>
+                                    <Checkbox_agreeRegis class='agreeTerm' id='agreeTerm' name='agreeTerm' agreeTerm={agreeTerm}/>
                                     <span>agree to terms and conditions</span>
                                 </div>
                             </div>
