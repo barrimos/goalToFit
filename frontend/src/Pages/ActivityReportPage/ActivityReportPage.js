@@ -49,7 +49,7 @@ function ActivityReportPage(){
 
     useEffect(() => {
         ( async () => {
-            await axios.get(`${config.vercel}/profile/`)
+            await axios.get(`${config.vercel}/profile/user/barrimos`)
                 .then(res => {
                     setUser(res.data);
                 })
@@ -239,7 +239,7 @@ function ActivityReportPage(){
                                     <div className='d-flex justify-content-between align-items-center'>
                                         <div className='weight-300 font-subhead font-sm-subhead'><FullDate/></div>
                                         
-                                        <div className='weight-300 font-subhead font-sm-subhead'>day {diffDay || '113'}</div>
+                                        <div className='weight-300 font-subhead font-sm-subhead'>day {diffDay === 0 ? 0 : diffDay || '113'}</div>
                                     </div>
                                 </div>
 
