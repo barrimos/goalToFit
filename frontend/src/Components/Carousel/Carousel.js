@@ -17,7 +17,7 @@ function Carousel(props){
 
     useEffect(() => {
         ( async () => {
-            await axios.get(`${config.local}/create/packset`)
+            await axios.get(`${config.vercel}/create/packset`)
             .then(res => {
                 setActivitiesPack(res.data);
             })

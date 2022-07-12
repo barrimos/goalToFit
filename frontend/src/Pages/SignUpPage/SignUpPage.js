@@ -18,7 +18,7 @@ function SignUpPage(){
     const [isAllChecked, setIsAllChecked] = useState(false);
 
     useEffect( async () => {
-        await axios.get(`${config.local}/profile`)
+        await axios.get(`${config.vercel}/profile`)
             .then(res => {
                 if(res.data.length === 0){
                     setId(100001);

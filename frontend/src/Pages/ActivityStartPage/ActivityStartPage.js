@@ -49,7 +49,7 @@ function ActivityStartPage(){
     const saveActivityToDB = async (e, index) => {
         e.preventDefault();
         let exerciseLen;
-        await axios.get(`${config.local}/report/records`)
+        await axios.get(`${config.vercel}/report/records`)
             .then(res => {
                 if(res.data.length === 0){
                     exerciseLen = 0;
@@ -75,7 +75,7 @@ function ActivityStartPage(){
             atDate: getDate[index] || todays
         }
         // console.log(data);
-        await axios.post(`${config.local}/start/activity`, data)
+        await axios.post(`${config.vercel}/start/activity`, data)
             .then(res => alert('Activities Save'))
             .then(() => {
                 deleteCardActivity(e, index);

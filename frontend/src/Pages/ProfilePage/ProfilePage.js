@@ -15,7 +15,7 @@ function ProfilePage(){
     const [isWaiting, setIsWaiting] = useState(true);
 
     useEffect(async () => {
-        await axios.get(`${config.local}/profile/`)
+        await axios.get(`${config.vercel}/profile/`)
             .then(res => {
                 if(res.data){
                     setUser(res.data);

@@ -35,21 +35,21 @@ function ActivityReportPage(){
     const diffTime = nowTime - startTime;
     const diffDay = Math.floor(diffTime / (1000 * 3600 * 24));
 
-    // useEffect(() => {
-    //     if(user.length === 0 || records.length === 0){
-    //         setIsWaiting(true);
-    //     } else {
-    //         setTimeout(() => {
-    //             setIsWaiting(false);
-    //             doneLevel();
-    //             setUserBmi(calcBMI(user && user.weight, user && user.height, 0));
-    //         }, 1000);
-    //     }
-    // }, [user, records])
+    useEffect(() => {
+        if(user.length === 0){
+            setIsWaiting(true);
+        } else {
+            setTimeout(() => {
+                setIsWaiting(false);
+                doneLevel();
+                setUserBmi(calcBMI(user && user.weight, user && user.height, 0));
+            }, 1000);
+        }
+    }, [user, records])
 
     useEffect(() => {
         ( async () => {
-            await axios.get(`${config.local}/profile/`)
+            await axios.get(`${config.vercel}/profile/`)
                 .then(res => {
                     setUser(res.data);
                 })
@@ -59,7 +59,7 @@ function ActivityReportPage(){
 
     useEffect(() => {
         ( async () => {
-            await axios.get(`${config.local}/report/records`)
+            await axios.get(`${config.vercel}/report/records`)
             .then(res => {
                 setRecords(res.data.reverse());
             })
@@ -164,7 +164,7 @@ function ActivityReportPage(){
 
     const deleteActivity = async (id, boolean) => {
         let refreshData =  records.filter(record => record.id !== id);
-        await axios.delete(`${config.local}/report/delete/${id}`)
+        await axios.delete(`${config.vercel}/report/delete/${id}`)
             .then(() => {
                 setRecords(refreshData);
                 setActionManageItem(true);
@@ -179,7 +179,7 @@ function ActivityReportPage(){
             .catch(err => console.error(err))
     }
     const editActivity = async (id, data, boolean) => {
-        await axios.put(`${config.local}/report/update/${id}`, {data})
+        await axios.put(`${config.vercel}/report/update/${id}`, {data})
             .then(() => {
                 setIsUpdate(true);
                 setActionManageItem(true);

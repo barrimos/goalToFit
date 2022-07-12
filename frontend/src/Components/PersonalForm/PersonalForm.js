@@ -111,7 +111,7 @@ function PersonalForm(props){
             achievement: achievement || 0
         }
 
-        await axios.post(`${config.local}/register/personal_regis?id=${id}`, user)
+        await axios.post(`${config.vercel}/register/personal_regis?id=${id}`, user)
             .then(() => {
                 alert('Your register completed !! your account is ready');
                 window.location.replace(`${window.location.origin}/login`);
