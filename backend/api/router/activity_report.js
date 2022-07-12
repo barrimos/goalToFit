@@ -12,7 +12,7 @@ allReportRouter.get('/records', async (req, res, next) => {
 
 // DELETE ACTIVITIES - REPORT PAGE
 allReportRouter.delete('/delete/:id', (req, res, next) => {
-    Records.deleteOne({'id': { '$eq': req.params.id}})
+    Records.deleteOne({'id': {'$eq': req.params.id}})
         .then(() => res.json('Exercise deleted.'))
         .catch(err => console.error('Error: ' + err))
 });
@@ -20,7 +20,7 @@ allReportRouter.delete('/delete/:id', (req, res, next) => {
 // PUT UPDATE RECORDS - REPORT PAGE
 allReportRouter.put('/update/:id', (req, res, next) => {
     // console.log(req.body.data);
-    Records.findOne({'id': { '$eq': req.params.id}})
+    Records.findOne({'id': {'$eq': req.params.id}})
         .then((ac) => {
             ac.atDate = req.body.data.atDate;
             ac.startTime = req.body.data.startTime;

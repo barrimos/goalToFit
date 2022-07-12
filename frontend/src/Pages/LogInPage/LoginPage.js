@@ -29,7 +29,7 @@ function LoginPage(){
     }, [])
 
     const authLogin = async () => {
-        await axios.post(`${config.vercel}profile/authen`, {uid, upw})
+        await axios.post(`${config.local}/profile/authen`, {uid, upw})
             .then(res => {
                 if(remainAuthen <= 0){
                     setRemainAuthen(0);

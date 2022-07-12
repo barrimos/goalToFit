@@ -4,7 +4,7 @@ import './Modal.css';
 
 function Modal(props){
 
-    const [isModalOpen, setIsModalOpen] = useState(props.stateOpenModal);
+    const [isModalOpen, setIsModalOpen] = useState(props.stateModalOpen);
 
     // normal close click button
     useEffect(() => {

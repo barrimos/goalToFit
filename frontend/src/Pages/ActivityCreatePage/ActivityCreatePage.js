@@ -81,7 +81,7 @@ function ActivityCreatePage(){
 
     useEffect(() => {
         ( async () => {
-        await axios.get(`${config.vercel}create/individual`)
+        await axios.get(`${config.local}/create/individual`)
             .then(res => {
                 setActivitiesSets(res.data);
             })

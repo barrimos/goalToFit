@@ -17,13 +17,13 @@ import Reloading from '../../Components/Reloading/Reloading';
 
 function ActivityReportPage(){
     
-    const [user, setUser] = useState();
+    const [user, setUser] = useState({});
     const [records, setRecords] = useState([]);
     const [userBmi, setUserBmi] = useState();
     const [isLoaded, setIsLoaded] = useState(false);
     const [isUpdate, setIsUpdate] = useState(false);
     const [isSorted, setIsSorted] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [dataToModal, setDataToModal] = useState([]);
     const [classType, setClassType] = useState('');
     const [getUpdateData, setGetUpdateData] = useState();
@@ -35,21 +35,21 @@ function ActivityReportPage(){
     const diffTime = nowTime - startTime;
     const diffDay = Math.floor(diffTime / (1000 * 3600 * 24));
 
-    useEffect(() => {
-        if(user === undefined || records.length === 0){
-            setIsWaiting(true);
-        } else {
-            setTimeout(() => {
-                setIsWaiting(false);
-                doneLevel();
-                setUserBmi(calcBMI(user && user.weight, user && user.height, 0));
-            }, 1000);
-        }
-    }, [user, records])
+    // useEffect(() => {
+    //     if(user.length === 0 || records.length === 0){
+    //         setIsWaiting(true);
+    //     } else {
+    //         setTimeout(() => {
+    //             setIsWaiting(false);
+    //             doneLevel();
+    //             setUserBmi(calcBMI(user && user.weight, user && user.height, 0));
+    //         }, 1000);
+    //     }
+    // }, [user, records])
 
     useEffect(() => {
         ( async () => {
-            await axios.get(`${config.vercel}profile/user/barrimos`)
+            await axios.get(`${config.local}/profile/`)
                 .then(res => {
                     setUser(res.data);
                 })
@@ -59,7 +59,7 @@ function ActivityReportPage(){
 
     useEffect(() => {
         ( async () => {
-            await axios.get(`${config.vercel}report/records`)
+            await axios.get(`${config.local}/report/records`)
             .then(res => {
                 setRecords(res.data.reverse());
             })
@@ -82,12 +82,11 @@ function ActivityReportPage(){
 
     const doneLevel = async () => {
         let elems = await document.querySelectorAll('.status');
-
         for(let i = 0; i < elems.length; i++){
             let statsUser = await Number(elems[i].attributes.value.value);
             let statsGoal = await Number(elems[i].attributes.goal.value);
-            // console.log(elems[i].attributes.name)
-            if(elems[i].attributes.name){
+
+            if(elems[i].attributes.name.value === 'statsCard'){
                 if(statsUser > statsGoal){
                     if(elems[i].classList.contains('welldone') || elems[i].classList.contains('fair')){
                         elems[i].classList.remove('welldone') || elems[i].classList.remove('fair');
@@ -165,7 +164,7 @@ function ActivityReportPage(){
 
     const deleteActivity = async (id, boolean) => {
         let refreshData =  records.filter(record => record.id !== id);
-        await axios.delete(`${config.vercel}report/delete/${id}`)
+        await axios.delete(`${config.local}/report/delete/${id}`)
             .then(() => {
                 setRecords(refreshData);
                 setActionManageItem(true);
@@ -180,7 +179,7 @@ function ActivityReportPage(){
             .catch(err => console.error(err))
     }
     const editActivity = async (id, data, boolean) => {
-        await axios.put(`${config.vercel}report/update/${id}`, {data})
+        await axios.put(`${config.local}/report/update/${id}`, {data})
             .then(() => {
                 setIsUpdate(true);
                 setActionManageItem(true);
@@ -194,6 +193,7 @@ function ActivityReportPage(){
             })
             .catch(err => console.error(err))
     }
+
 
     return(
         <>
@@ -239,7 +239,7 @@ function ActivityReportPage(){
                                     <div className='d-flex justify-content-between align-items-center'>
                                         <div className='weight-300 font-subhead font-sm-subhead'><FullDate/></div>
                                         
-                                        <div className='weight-300 font-subhead font-sm-subhead'>day {diffDay}</div>
+                                        <div className='weight-300 font-subhead font-sm-subhead'>day {diffDay || '113'}</div>
                                     </div>
                                 </div>
 
@@ -249,9 +249,9 @@ function ActivityReportPage(){
                                             <div className='row body-top d-flex justify-content-between h-100'>
                                                 <div className='col-12 d-flex justify-content-start align-items-center'>
                                                     <div className='profile-image mr-3'>
-                                                        <img src={user ? user.img : '../../img/gtf-logo.png'} alt='profile image'/>
+                                                        <img src={user && user.img ? user.img : '../../img/gtf-logo.png'} alt='profile image'/>
                                                     </div>
-                                                    <div className='profile-name font-head weight-900 primary-text-color text-left'>{user ? user.username : 'John Doe'} {`(${user && user.age})`}</div>
+                                                    <div className='profile-name font-head weight-900 primary-text-color text-left'>{user && user.username ? user.username : 'John Doe'} {`(${user && user.age ? user.age : '20'})`}</div>
                                                 </div>
                                                 <div className='create-btn col-md-6 d-none d-md-flex px-0'>
                                                     <div className='col-auto d-flex justify-content-end align-items-center'>
@@ -273,9 +273,9 @@ function ActivityReportPage(){
                                                         </div>
                                                         <div className='col-3'>
                                                             <div className='font-detail text-center'>Stats</div>
-                                                            <div className='font-detail text-center status' name='statsCard' value={9} goal={62}>9</div>
-                                                            <div className='font-detail text-center status' name='statsCard' value={user && user.weight} goal={55}>{user && user.weight}</div>
-                                                            <div className='font-detail text-center status' name='statsCard' value={userBmi} goal={22}>{userBmi}</div>
+                                                            <div className='font-detail text-center status' name='statsCard' value={user && user.achievement ? user.achievement : 0} goal={62}>{user && user.achievement ? user.achievement : 0}</div>
+                                                            <div className='font-detail text-center status' name='statsCard' value={user && user.weight ? user.weight : 60} goal={55}>{user && user.weight ? user.weight : 60}</div>
+                                                            <div className='font-detail text-center status' name='statsCard' value={!isNaN(userBmi) ? userBmi : 40} goal={22}>{!isNaN(userBmi) ? userBmi : 40}</div>
                                                         </div>
                                                         <div className='col-3'>
                                                             <div className='font-detail text-center'>Goal</div>
@@ -325,7 +325,7 @@ function ActivityReportPage(){
                                                                         <small className='col-12 d-block p-0'>Start at</small>
                                                                     </div>
                                                                     <div className='col-7 activity-result'>
-                                                                        <strong className='col-12 d-block p-0 status' id={`record-${i + 1}`} value={record.quantity.done} goal={record.quantity.goal}>{classifierActivity(record.quantity.done, record.quantity.classifier)} / {classifierActivity(record.quantity.goal, record.quantity.classifier, 2)}</strong>
+                                                                        <strong className='col-12 d-block p-0 status' name='statsRecords' id={`record-${i + 1}`} value={record.quantity.done} goal={record.quantity.goal}>{classifierActivity(record.quantity.done, record.quantity.classifier)} / {classifierActivity(record.quantity.goal, record.quantity.classifier, 2)}</strong>
                                                                         <small className='col-12 d-block p-0'>{minToHour(record.duration)}</small>
                                                                         <small className='col-12 d-block p-0'>{record.startTime}<br/>{record.atDate}</small>
                                                                     </div>
@@ -387,7 +387,7 @@ function ActivityReportPage(){
                                             </div>
                                             <div className='d-flex label-container'>
                                                 <div className='font-detail color-graph-weight label-graph'>Weight(Kg)</div>
-                                                <div className='font-detail color-graph-calories label-graph'>Calories</div>
+                                                <div className='font-detail color-graph-calories label-graph'>BMI</div>
                                             </div>
                                         </div>
                                     </div>

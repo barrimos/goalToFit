@@ -93,28 +93,28 @@ function FormActivity(props){
 
     return(
         <form className='settingInfo'>
-            <label htmlFor={`getDate`}>Date</label>
-            <input type='date' className='getDate' id={`getDate`} value={getDate || props.data[0][0].atDate} min='2022-01-01' max={today} onChange={e => getDMY(e)}/>
+            <label htmlFor='getDate'>Date</label>
+            <input type='date' className='getDate' id='getDate' value={getDate || props.data[0][0].atDate} min='2022-01-01' max={today} onChange={e => getDMY(e)}/>
 
-            <label htmlFor={`startTime`}>Start Time</label>
-            <input type='time' className='startTime' id={`startTime`} value={startTime || ''} onChange={e => getStartTime(e)}/>
+            <label htmlFor='startTime'>Start Time</label>
+            <input type='time' className='startTime' id='startTime' value={startTime || ''} onChange={e => getStartTime(e)}/>
 
-            <label htmlFor={`duration`}>Duration</label>
+            <label htmlFor='duration'>Duration</label>
             {focused ?
-                <input type='number' className='duration' id={`duration`} value={duration || ''} min='1' max='1440' placeholder='min' onBlur={onBlur} onChange={e => getDuration(e)}/>
+                <input type='number' className='duration' id='duration' value={duration || ''} min='1' max='1440' placeholder='min' onBlur={onBlur} onChange={e => getDuration(e)}/>
                 :
-                <input type='text' className='duration' id={`duration`} value={displayDuration || ''} placeholder='min' onFocus={onFocus}/>
+                <input type='text' className='duration' id='duration' value={displayDuration || ''} placeholder='min' onFocus={onFocus}/>
             }
 
-            <label htmlFor={`quantity-done`}>Quantity</label>
+            <label htmlFor='quantity-done'>Quantity</label>
             {focused ?
-                <input type='number' className='quantity-goal' id={`quantity-goal`} value={quantityGoal || ''} min='1' placeholder='goal (reps or metres)' onBlur={onBlur} onChange={e => getQuantity(e)}/>
+                <input type='number' className='quantity-goal' id='quantity-goal' value={quantityGoal || ''} min='1' placeholder='goal (reps or metres)' onBlur={onBlur} onChange={e => getQuantity(e)}/>
                 :
-                <input type='text' className='quantity-goal' id={`quantity-goal`} value={displayQuantityGoal || ''} placeholder='goal (reps or metres)' onFocus={onFocus}/>
+                <input type='text' className='quantity-goal' id='quantity-goal' value={displayQuantityGoal || ''} placeholder='goal (reps or metres)' onFocus={onFocus}/>
             }
             
-            <label htmlFor={`description`}>Description</label>
-            <input type='text' className='description' id={`description`} value={description || ''} maxLength='60' placeholder='max 60 letters' onChange={e => getDescribe(e)}/>
+            <label htmlFor='description'>Description</label>
+            <input type='text' className='description' id='description' value={description || ''} maxLength='60' placeholder='max 60 letters' onChange={e => getDescribe(e)}/>
         </form>
     )
 }

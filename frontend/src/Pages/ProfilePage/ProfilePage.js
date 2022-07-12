@@ -10,27 +10,33 @@ import Reloading from '../../Components/Reloading/Reloading';
 
 function ProfilePage(){
 
-    const [isOpenModal, setIsOpenModal] = useState();
-    const [user, setUser] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [user, setUser] = useState([]);
     const [isWaiting, setIsWaiting] = useState(true);
 
     useEffect(async () => {
-        await axios.get(`${config.vercel}profile/user/barrimos`)
-            .then(res => setUser(res.data))
+        await axios.get(`${config.local}/profile/`)
+            .then(res => {
+                if(res.data){
+                    setUser(res.data);
+                } else {
+                    setUser(undefined)
+                }
+            })
             .catch(err => console.error('Error: ' + err))
     }, [])
 
     const editorOpen = (e) => {
         e.preventDefault();
-        setIsOpenModal(true);
+        setIsModalOpen(true);
     }
 
     const stateCloseModal = () => {
-        setIsOpenModal(false);
+        setIsModalOpen(false);
     }
 
     useEffect(() => {
-        if(user && user){
+        if(user !== undefined){
             setIsWaiting(false);
         } else {
             setIsWaiting(true);
@@ -44,10 +50,10 @@ function ProfilePage(){
                 :
                 <Template search={false} titleHead='Profile' showNav={false} readyButton={false}>
                     <div className='container'>
-                        {isOpenModal ?
+                        {isModalOpen ?
                             <Modal
                                 headTitle='Edit Personal'
-                                stateOpenModal={isOpenModal}
+                                stateOpenModal={isModalOpen}
                                 stateCloseModal={stateCloseModal}
                                 overflowY='scroll'
                             >
@@ -61,12 +67,12 @@ function ProfilePage(){
                         <div className='row'>
                             <div className='col-12 col-md-4 column-profile'>
                                 <div className='cardProfile'>
-                                    <img src={user && user.img} alt='imgProfile' className='imgProfile'/>
+                                    <img src={user && user.img ? user.img : '../../img/gtf-logo.png'} alt='imgProfile' className='imgProfile'/>
                                     <button type='button' onClick={e => editorOpen(e)} className='profileEditBtn'>Edit profile</button>
                                 </div>
                                 <div className='userGoal'>
                                     <h3>My goal</h3>
-                                    <p className='myGoal'>{user && user.goal}</p>
+                                    <p className='myGoal'>{user && user.goal ? user.goal : 'Burn 2,000 calories each workout.'}</p>
                                 </div>
                             </div>
                             <div className='col-12 col-md-8 column-data'>
@@ -89,10 +95,10 @@ function ProfilePage(){
                                     <div className='col-12 col-md-6 blog-data'>
                                         <div className='inside-block'>
                                             <div className='title-data'>
-                                                BMI : {getBmiResult(user && user.weight, user && user.height)}
+                                                BMI : {getBmiResult(user && user.weight ? user.weight : 60, user && user.height ? user.height : 165)}
                                             </div>
                                             <div className='result_BMI'>
-                                                <span className='res'><em>{calcBMI(user && user.weight, user && user.height)}</em></span>
+                                                <span className='res'><em>{calcBMI(user && user.weight ? user.weight : 60, user && user.height ? user.height : 165)}</em></span>
                                             </div>
                                         </div>
                                     </div>

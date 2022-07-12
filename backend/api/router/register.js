@@ -1,32 +1,12 @@
 const express = require('express');
 const UserPersonal = require('../model/users.model');
-const UserAuthen = require('../model/users.emailPass.model');
 
 const registerRouter = express.Router();
 
-registerRouter.post('/authentication_regis', (req, res, next) => {
-    const dataEmailPass = req.body;
-    const userDataEmailPass = new UserAuthen(dataEmailPass);
-
-    UserAuthen.findOne({'email': {'$eq': dataEmailPass.email}})
-        .then(email => {
-            if(email){
-                throw new Error();
-            } else {
-                userDataEmailPass.save()
-                    .then(() => res.json('Your register completed !! you account is ready'))
-                    .catch(err => res.status(400).json('Error:' + err));
-            }
-        })
-        .catch(err => res.status(404).json('Error:' + err));
-});
-
-
-registerRouter.put('/personal_regis', (req, res, next) => {
+registerRouter.post('/personal_regis', (req, res, next) => {
     const dataPersonal = req.body;
-    const userDataPersonal = new UserPersonal(dataPersonal);
-
-    userDataPersonal.save()
+    const newUser = new UserPersonal(dataPersonal);
+    newUser.save()
         .then(() => res.json('Your register completed !! you account is ready'))
         .catch(err => res.status(400).json('Error:' + err));
 });

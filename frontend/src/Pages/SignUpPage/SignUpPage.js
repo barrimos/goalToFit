@@ -7,6 +7,7 @@ import axios from 'axios';
 import config from '../../config';
 import InputForm from '../../Components/InputForm/InputForm';
 import Logo from '../../Components/Logo/Logo';
+import { encrypt, salty } from '../../utils/encrypt';
 
 function SignUpPage(){
 
@@ -16,17 +17,16 @@ function SignUpPage(){
     const [isAgreeTermCheck, setIsAgreeTermCheck] = useState(false);
     const [isAllChecked, setIsAllChecked] = useState(false);
 
-
     useEffect( async () => {
-        await axios.get(`${config.vercel}profile`)
-        .then(res => {
-            if(res.data.length === 0){
-                setId('100001');
-            } else {
-                setId(Number(res.data[res.data.length - 1].id));
-            }
-        })
-        .catch(err => alert('Error: ' + err))
+        await axios.get(`${config.local}/profile`)
+            .then(res => {
+                if(res.data.length === 0){
+                    setId(100001);
+                } else {
+                    setId(Number(res.data[res.data.length - 1].id) + 1);
+                }
+            })
+            .catch(err => alert('Error: ' + err))
     })
 
     useEffect(() => {
@@ -37,19 +37,17 @@ function SignUpPage(){
         }
     }, [isAgreeTermCheck, email, pass]);
 
-    const signupFirst = async () => {
-        const authen = await {
-            id: id === '100001' ? id : String(id + 1),
-            email: email,
-            password: pass
-        };
 
-        await axios.post(`${config.vercel}register/authentication_regis`, authen)
-            .then(res => {
-                alert('Email registeration complete click to continue..', res);
-                window.location.href = window.location.origin + '/register';
-            })
-            .catch(err => alert('Error: Email has already exists', err));
+    const signupFirst = () => {
+        const authen = {
+            id: String(id),
+            email: email,
+            password: encrypt(pass),
+            salt: salty(),
+        };
+        console.log(authen);
+        // sessionStorage.setItem('data', JSON.stringify(authen));
+        // window.location.replace(window.location.origin + `/register?id=${authen.id}`);
     }
 
     return(

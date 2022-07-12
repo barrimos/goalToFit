@@ -13,15 +13,15 @@ function PersonalForm(props){
 
     const [isAllow, setIsAllow] = useState(true);
 
-    const [username, setUsername] = useState();
+    const [username, setUsername] = useState('');
     const [avatar, setAvatar] = useState();
-    const [age, setAge] = useState();
+    const [age, setAge] = useState('');
     const [gender, setGender] = useState('unique');
-    const [weight, setWeight] = useState();
-    const [height, setHeight] = useState();
-    const [goal, setGoal] = useState();
+    const [weight, setWeight] = useState('');
+    const [height, setHeight] = useState('');
+    const [goal, setGoal] = useState('');
     const [days, setDays] = useState([]);
-    const [time, setTime] = useState();
+    const [time, setTime] = useState('');
     const [achievement, setAchievement] = useState(0);
     const [isAgreedRegis, setIsAgreedRegis] = useState(false);
 
@@ -33,6 +33,10 @@ function PersonalForm(props){
     //         setIsAllow(true);
     //     }
     // }, [])
+
+    const backLogin = () => {
+        window.location.href = window.location.origin + '/login';
+    }
 
     const agreeTerm = (e) => {
         if(e.target.checked){
@@ -84,38 +88,38 @@ function PersonalForm(props){
         var file = element.target.files[0];
         var reader = new FileReader();
         reader.onloadend = function() {
-          console.log('RESULT', reader.result)
+            console.log('RESULT', reader.result)
         }
         reader.readAsDataURL(file);
     }
 
     const userPersonalRegister = async () => {
-        let User = {
-            'username': username,
-            'age': Number(age),
-            'gender': gender,
-            'weight': Number(weight),
-            'height': Number(height),
-            'goal': goal,
-            'setDayAndTime': {
-                'days': days,
-                'time': time
-            },
-            'achievement': achievement || 0
-        }
-        // console.log(User);
+        let id = new URLSearchParams(window.location.search).get('id');
 
-        await axios.put(`${config.vercel}register/personal_regis`, User)
-            .then(res => {
-                console.log(res.data);
-                window.location.href = `${window.location.origin}/login`;
-                // sessionStorage.clear();
+        let user = await {
+            username: username,
+            age: Number(age),
+            gender: gender,
+            img: 'https://www.finearts.cmu.ac.th/wp-content/uploads/2021/07/blank-profile-picture-973460_1280-1.png',
+            weight: Number(weight),
+            height: Number(height),
+            goal: goal,
+            setDayAndTime: {
+                days: days,
+                time: time
+            },
+            achievement: achievement || 0
+        }
+
+        await axios.post(`${config.local}/register/personal_regis?id=${id}`, user)
+            .then(() => {
+                alert('Your register completed !! your account is ready');
+                window.location.replace(`${window.location.origin}/login`);
             })
             .catch(err => {
                 alert('Your register is not complete, Username or email is already exist');
                 document.getElementById('agreeTerm').checked = false;
-                // sessionStorage.removeItem('completeAllData');
-                agreeTerm();
+                setIsAgreedRegis(false);
             });
     }
 
@@ -175,7 +179,7 @@ function PersonalForm(props){
                             <div className='col-12 my-3'>
                                 <div className='btnSubmit d-block text-center d-sm-flex justify-content-center align-items-center'>
                                     <Button classBtn='regisBtn' action={userPersonalRegister} isAgreedRegis={isAgreedRegis} text='Register'/>
-                                    <Button classBtn='cancelBtn' text='Cancel'/>
+                                    <Button classBtn='cancelBtn' action={backLogin} text='Cancel'/>
                                 </div>
                             </div>
                         </div>

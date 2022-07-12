@@ -9,7 +9,10 @@ function Button(props){
 
     const handleOnClick = (e) => {
         e.preventDefault();
-        if(bool === false){
+        if(e.target.name === 'Cancel'){
+            props.action();
+        }
+        if(!bool){
             return;
         } else {
             props.action();
