@@ -24,7 +24,7 @@ function TeamPage(){
                 <div className='teamate my-4'>
                     <div className='container'>
                         <button onClick={() => backTo()} className='backTo'>&times; Back to previous page</button>
-                        <h3 style={{'text-align': 'center'}}>Pokkii Group</h3>
+                        <h3 style={{'textAlign': 'center'}}>Pokkii Group</h3>
                         <div className='row'>
                             <div className='col-12 col-md-4'>
                                 <div className='cardTeam'>

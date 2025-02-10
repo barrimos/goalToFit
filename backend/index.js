@@ -4,6 +4,7 @@ const config = require('./config');
 
 // Connect database mongo
 const boot = async () => {
+  // await mongoose.connect('mongodb://127.0.0.1:27017/gtf_db');
   await mongoose.connect(config.mongoUri, config.mongoOptions);
   
   app.listen(config.port, () => {

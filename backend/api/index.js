@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('../config');
 const morgan = require('morgan')
@@ -11,10 +10,15 @@ const app = express();
 const PORT = config.port;
 
 app.use(morgan('tiny'))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
-app.use(cors());
+const corsOptions = {
+  origin: ['https://goaltofitapp.vercel.app', 'http://localhost:3000'],
+  methods: 'GET,POST,DELETE,OPTIONS,PATCH,PUT'
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 if (config.isVercel) {
