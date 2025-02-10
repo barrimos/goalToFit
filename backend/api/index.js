@@ -7,14 +7,13 @@ const morgan = require('morgan')
 require('dotenv').config();
 
 const app = express();
-const PORT = config.port;
 
 app.use(morgan('tiny'))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 const corsOptions = {
-  origin: ['https://goaltofitapp.vercel.app', 'http://localhost:3000'],
+  origin: ['https://goaltofitapp.vercel.app'],
   methods: 'GET,POST,DELETE,OPTIONS,PATCH,PUT'
 }
 
